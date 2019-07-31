@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="i in 10" :key="index">
+                这是第 {{i}} 个数
+            </li>
+        </ul>
+
+        <p style="color: red">注意: 遍历数字是从1开始的</p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el : "#app",
+            data : {
+                
+            }
+        })
+    </script>
+    
+</body>
+</html>

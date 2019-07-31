@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+<!--生产版本-->		
+<!--<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+-->		<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>		
+		<title>vue 实例</title>
+	</head>
+	<body>
+		<div id="id_vue_instance">
+			<p>msg的值是： {{msg}}</p>
+			<button v-on:click="changeByVm">通过vue实例改变</button>
+			<button v-on:click="changeByMyData">通过修改myData改变</button>
+			<p> 注意 ： 值得注意的是只有当实例被创建时 data 中存在的属性才是响应式的。</p>
+			
+		</div>
+		<div id="id_freeze">
+			<p>frezzObj.foo : {{foo}}</p>
+			<button v-on:click="changeFreeze">修改经过Object.freeze的值</button>
+		</div>
+		
+		<div id="id_lifecycle">
+			<p>{{a}}</p>
+			
+			<button v-on:click="changeA">修改A的值</button>
+		</div>
+		<script src="../js/vue_instance.js"></script>
+	</body>
+</html>

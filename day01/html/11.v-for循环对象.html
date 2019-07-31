@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+        <ul>
+            <li v-for="(value, key) in song">
+                {{value}} ----{{key}}
+            </li>
+        </ul>
+
+        <hr>
+
+        <ul>
+            <li v-for="(value, key,index) in song">
+                {{value}} --- {{key}} --- {{index}}
+            </li>
+        </ul>
+
+        <hr>
+        <h2>总结</h2>
+        <ul>
+            <li v-for="(item, index) in items" :key="index" style="color: red">{{item}}</li>
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                song: {
+                    name: "花田错",
+                    singer: "王力宏",
+                    time: "2009-01-01"
+                },
+                items:[
+                    "1. 遍历对象时，接收参数一 value 二是name，三是index(可选)",
+                    "2. 对象就是无序键值对的集合"
+                ]
+            }
+        })
+    </script>
+
+</body>
+
+</html>

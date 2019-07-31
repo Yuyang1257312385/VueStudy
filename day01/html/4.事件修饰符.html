@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>事件修饰符</title>
+
+    <style>
+        .inner{
+            height: 30px;
+            background-color:darkcyan;
+        }
+
+        .outer{
+            padding: 10px;
+            background-color:red;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <p>默认</p>
+        <div class="outer" @click="outerClick">
+            <div class="inner" @click="innerClick">
+                <input type="button" value="点我" @click="btnClick">
+            </div>
+        </div>
+
+        <p>btn stop</p>
+        <div class="outer" @click="outerClick">
+            <div class="inner" @click="innerClick">
+                <input type="button" value="点我" @click.stop="btnClick">
+            </div>
+        </div>
+
+        <p>InnerDiv self</p>
+        <div class="outer" @click="outerClick">
+            <div class="inner" @click.self="innerClick">
+                <input type="button" value="点我" @click="btnClick">
+            </div>
+        </div>
+
+        <p>没有prenvet</p>
+        <a href="http://www.baidu.com" @click="preventClick">百度</a>
+        <p>有prenvet</p>
+        <a href="http://www.baidu.com" @click.prevent="preventClick">百度</a>
+
+        <p>once</p>
+        <a href="http://www.baidu.com" @click.prevent.once="preventClick">百度</a>
+        
+        
+        
+        <p>Inner capture</p>
+        <div class="outer" @click="outerClick">
+                <div class="inner" @click.capture="innerClick">
+                <input type="button" value="点我" @click.stop="btnClick">
+            </div>
+        </div>
+
+        <input type="button" value="清空结果" @click="clearResult">
+        <p>result is {{result}}</p>
+
+        <hr>
+        <h2>总结</h2>
+        <p v-for="(item, index) in points" :key="index" style="color: red">
+            {{item}}
+        </p>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el : "#app",
+            data : {
+                result : "",
+                points :
+                    [
+                        "0. 默认情况下，点击时从内到外冒泡式的往外传",
+                        "1. stop: 阻止冒泡",
+                        "2. self : 只有操作当前元素时才会触发事件",
+                        "3. prevent : 阻止默认行为 如a的跳转链接 ",
+                        "4. once : 只执行一次 ",
+                        "5. capture : 实现捕获触发事件的机制"]
+            },
+            methods: {
+                outerClick(){
+                    this.result += "outerClick --> "
+                },
+                innerClick(){
+                    this.result += "innerClick --> "
+                },
+                btnClick(){
+                    this.result += "btnClick --> "
+                },
+                preventClick(){
+                    this.result += "preventClick -->"
+                },
+                clearResult(){
+                    this.result = ""
+                }
+            },
+        })
+    </script>
+    
+</body>
+</html>

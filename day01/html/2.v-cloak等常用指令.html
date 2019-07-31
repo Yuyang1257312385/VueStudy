@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2>插值表达式 vs v-text</h2>
+        <p v-cloak>---{{msg}}---</p>
+        <p v-text="msg">=========</p>
+        
+        <h2>v-html vs v-text</h2>
+        <p v-html="rawHtml"></p>
+        <p v-text="rawHtml"></p>
+        
+        <h2>v-bind 属性绑定</h2>
+        <input type="button" :title= "title" value="在上面放一会">
+
+        <h2>v-on:待绑定事件  绑定事件</h2>
+        <input type="button" value="弹窗" v-on:click="show('一些东西')">
+        <input type="button" value="鼠标扫过" v-on:mouseover="show('鼠标扫过')"
+
+        <hr>
+        <h2 style="color: red">总结</h2>
+        <p v-for="(item, index) in points1" :key="index" style="color: red">
+                {{item}}
+        </p>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el : "#app",
+            data : {
+                msg : "this is msg",
+                rawHtml : "<h2>这是一个比较大的h2</h2>",
+                title : "自定义的title",
+                points1 : [
+                    "1. v-cloak可以解决屏幕闪烁的问题",
+                    "2. 插值表达式 vs v-text : 插值表达式只会替换自己的占位符，而v-text会覆盖元素原本的内容",
+                    "3. v-html vs v-text区别 : v-text只会加载纯文本,而非html代码,加载html代码要使用v-html",
+                    "4. v-bind用于属性绑定，用法为 v-bind:待绑定属性，如v-bind:title  可以缩写为 :title",
+                    "5. v-on用于绑定事件，用法为 v-on:待绑定事件 如v-on:click  可以缩写为@click"
+                ]
+            },
+            methods: {
+                // show(){} 
+                // 是下面的es6高级写法
+                // show : function(){}
+                show(content){
+                    alert(content)
+                }
+            },
+        })
+    </script>
+</body>
+</html>

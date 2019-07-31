@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>不带索引</p>
+        <ul>
+            <li v-for="item in items" >
+                item is {{item}} 
+            </li>
+        </ul>
+
+        <p>带索引</p>
+        <ul>
+                <li v-for="(item, index) in items" :key="index">
+                    item is {{item}}  ----  index is {{index}}
+                </li>
+            </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el : "#app",
+            data : {
+                items : [
+                    "study html",
+                    "study css",
+                    "study js"
+                ]
+            }
+        })
+    </script>
+    
+</body>
+</html>

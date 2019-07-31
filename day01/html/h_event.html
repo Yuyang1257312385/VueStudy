@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>事件处理</title>
+</head>
+<body >
+
+
+    <div id="id_event">
+            <p>监听事件 记录点击次数</p>
+            <button v-on:click="clickCount += 1">点击了{{clickCount}}次</button>
+            <hr>
+            <p>事件处理方法</p>
+            <button v-on:click="greet">Greet</button>
+            <hr>
+            <p>内联处理器中的方法</p>
+            <button v-on:click="say('hello')">say Hello</button>
+            <button v-on:click="say('sorry')">say Sorry</button>
+            <p>访问原生事件对象</p>
+            <button v-on:click="warn('some msg',$event)">调用 warn(msg,event)</button>
+            <hr>
+            <p>事件修饰符</p>
+            <p style="color: red">此处不太理解，后面还需要看一下</p>
+            <p>stop : 事件从内层往外层传，若果里层的使用了stop，外层的click就不会执行了</p>
+            <div v-on:click="clickOut">
+                <button v-on:click.stop="clickInner">内层stop</button>
+            </div>
+            <div v-on:click="clickOut">
+                <button v-on:click="clickInner">没有stop</button>
+            </div>
+            <hr>
+            <p>按键修饰符</p>
+        
+            <input v-on:keyup.enter="clickWhichKey('enter')" placeholder="监听enter">
+            <input v-on:keyup.tab="clickWhichKey('tab')" placeholder="监听tab">
+            <input v-on:keyup.delete="clickWhichKey('delete')" placeholder="监听delete">
+            <input v-on:keyup.esc="clickWhichKey('esc')" placeholder="监听esc">
+            <input v-on:keyup.space="clickWhichKey('space')" placeholder="监听space">
+            <input v-on:keyup.up="clickWhichKey('up')" placeholder="监听up">
+            <input v-on:keyup.down="clickWhichKey('down')" placeholder="监听down">
+            <input v-on:keyup.left="clickWhichKey('left')" placeholder="监听left">
+            <input v-on:keyup.right="clickWhichKey('right')" placeholder="监听right">
+            <hr>
+            
+    </div>
+    
+    <script src="../js/vue_event.js"></script>
+    
+</body>
+</html>

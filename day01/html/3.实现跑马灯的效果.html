@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="跑起来" @click="run">
+        <input type="button" value="停下来" @click="stop">
+        <p>{{msg}}</p>
+
+    </div>
+    
+    <script>
+        var vm = new Vue({
+            el : "#app",
+            data : {
+                msg : "窗前明月光疑是地上霜!!!",
+                intervalId : null
+            },
+            methods: {
+                run(){
+                    if(this.intervalId != null)return
+                    //es6高级语法 : this直接指向的是vm
+                    setInterval( () => {
+                        var start  = this.msg.substring(0,1)
+                        var end = this.msg.substring(1)
+                        this.msg = end + start
+                    },400)
+
+                    // var _this = this;
+                    // this.intervalId = setInterval( function(){
+                    //     var start  = _this.msg.substring(0,1)
+                    //     var end = _this.msg.substring(1)
+                    //     _this.msg = end + start
+                    //     console.log(_this.msg)
+                    // },400)
+                    
+                },
+                stop(){
+                    if(this.intervalId == null)return
+                    clearInterval(this.intervalId)
+                    this.intervalId = null
+                }
+            },
+        })
+    </script>
+</body>
+</html>

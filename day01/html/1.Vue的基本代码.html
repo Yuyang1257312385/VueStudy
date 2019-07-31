@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 1. 导入vue.js的包 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>	
+    <title>Document</title>
+</head>
+<body>
+    <!-- 2. vue控制的元素区域 也就是mvvm中的v -->
+    <div id="app">
+        <h2>{{msg}}</h2>
+
+        <h2>总结</h2>
+        <ul>
+            <li style="color: red" v-for="(item, index) in points" :key="index">
+                {{item}}
+            </li>
+        </ul>
+    </div>
+
+    
+
+    <script>
+        // 3. 导入vue包之后，我们就可以创建vue的实例了 这个 vm就是mvvm中的vm
+        var vm = new Vue({
+            //4. vue对象中的el 表示的就是要控制id为app区域
+            el : "#app",
+            //5. vue对象中的data就是el中需要的数据，也就是mvvm中的m
+            data : {
+                msg : "hello vue",
+                points : [
+                    "1. 导入vue.js的包",
+                    "2. vue控制的元素区域 也就是mvvm中的v",
+                    "3. 导入vue包之后，我们就可以创建vue的实例了 这个 vm就是mvvm中的vm",
+                    "4. vue对象中的el 表示的就是要控制id为app区域",
+                    "5. vue对象中的data就是el中需要的数据，也就是mvvm中的m",
+                    `注意: 通过vue指令，我们就可以很方便的将数据渲染到页面上，而不用操作dom元素。
+                前端的vue等框架，不推荐我们手动的去操作dom元素`
+                ]
+            }
+        })
+    </script>
+    
+</body>
+</html>

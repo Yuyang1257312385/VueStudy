@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>		
+		<title>模板语法</title>
+	</head>
+	<body>
+		
+		<div id="id_template">
+			<p>{{rawHtml}}</p>
+			<p><span v-html="rawHtml"></span></p>
+			
+			
+			<p>====表达式====</p>
+			<p>{{number+1}}</p>
+			<p>{{ok ? "YES OK" : "NO THANKS"}}</p>
+			<p>{{msg.split(" ").reverse().join(" ")}}</p>
+			
+			<p>====指令====</p>
+			<p v-if="show">你可以看到我</p>
+			<button v-on:click="changeShow">改变show</button>
+			
+			<a v-bind:href="url">链接</a>
+			
+		</div>
+		
+		<script src="../js/vue_template.js"></script>
+	</body>
+</html>

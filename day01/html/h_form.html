@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>		
+    <title>表单输入绑定</title>
+</head>
+<body>
+
+    <div id="id_form">
+        <p>文本</p>
+        <input v-model="textContent">
+        <label>{{textContent}}</label>
+        <hr>
+        <p>多行文本</p>
+        <textarea v-model="multiContent"></textarea>
+        <p>{{multiContent}}</p>
+        <hr>
+        <p>复选框</p>
+        <p>单个</p>
+        <input type="checkbox" v-model="isCheck">
+        <label>{{isCheck}}</label>
+    
+        <p>多选按钮</p>
+        <input id="cb_apple" value="apple" type="checkbox" v-model="checkArray">
+        <label for="cb_apple">苹果</label>
+        <input id="cb_samsung" value="samsung" type="checkbox" v-model="checkArray">
+        <label for="cb_samsung">三星</label>
+        <input id="cb_huawei" value="huawei" type="checkbox" v-model="checkArray">
+        <label for="cb_huawei">华为</label>
+        <p>{{checkArray}}</p>
+        <p>单选按钮</p>
+        <input id="cb_male" value="male" type="radio" v-model="checkRadio">
+        <label for="cb_male">男</label>
+        <input id="cb_female" value="female" type="radio" v-model="checkRadio">
+        <label for="cb_female">女</label>
+        <input id="cb_confuse" value="confuse" type="radio" v-model="checkRadio">
+        <label for="cb_confuse">不清楚</label>
+        <p>{{checkRadio}}</p>
+        <hr>
+        <p>选择框</p>
+        <select v-model="selectOption">
+            <option disabled value="">请选择</option>
+            <option v-for="item in options" v-bind:value="item.value">{{item.text}}</option>
+        </select>
+        <p>selectOption is  {{selectOption}}</p>
+        <br>
+        <select v-model="multiSelectOption" multiple>
+            <option v-for="item in multiOptions" v-bind:value="item.value">{{item.text}}</option>
+        </select>
+        <p>multiSelectOption is  {{multiSelectOption}}</p>
+
+        <hr>
+
+        <p>值绑定</p>
+        <br>
+        <p>单选框</p>
+        <input  type="radio" class="radio_class" v-model="radioModel" v-bind:value="radioValue1">
+        <label >1</label>
+        <input  type="radio" class="radio_class" v-model="radioModel" v-bind:value="radioValue2">
+        <label >2</label>
+        <p>raidoModel is {{radioModel}} <br>
+           radioValue1 is {{radioValue1}}<br>
+           radioValue2 is {{radioValue2}} </p>
+        <br>
+        <p>复选框</p>
+        <input type="checkbox" 
+            v-model="cbModelDefault"
+            >
+            <label>{{cbModelDefault}}</label>
+        <p>cbModelDefault is {{cbModelDefault}}</p>
+
+        <input type="checkbox" 
+            v-model="cbModel"
+            true-value="yes"
+            false-value="no">
+            <label>{{cbModel}}</label>
+        <p>cbModel is {{cbModel}}</p>
+
+        <select v-model="selectOp">
+            <option disabled value="">请选择</option>
+            <option v-bind:value="number">{{number}}</option>
+            <option v-bind:value="radioModel">{{radioModel}}</option>
+        </select>
+
+        <p>selectOp is {{selectOp}} <br>
+            number is {{number}}</p>
+        <hr>
+        <p>修饰符</p>
+        <p>lazy的使用  输入时不会及时同步  按了enter才同步</p>
+        <input v-model.lazy="msg" v-on:change="changeMsg">
+        <p>{{msg}}</p>
+
+        <p>number的使用</p>
+        <input v-model.number="age" type="number" placeholder="请输入100">
+        <p>{{age === 100}}</p>
+
+        <p>trim的使用</p>
+        <input v-model.trim="trimContent" placeholder="请输入带空格文本">
+        <p>{{trimContent}}</p>
+
+    </div>
+
+    <script src="../js/vue_form.js"></script>
+    
+</body>
+</html>

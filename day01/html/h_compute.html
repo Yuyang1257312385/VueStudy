@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>	
+		<!-- 因为 AJAX 库和通用工具的生态已经相当丰富，Vue 核心代码没有重复 -->
+<!-- 提供这些功能以保持精简。这也可以让你自由选择自己更熟悉的工具。 -->
+<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+		<title>计算属性和侦听</title>
+	</head>
+	<body>
+		
+		<div id="id_compute_watch">
+			<p>{{msg}}</p>
+			<p>reverseMsg ：  {{reverseMsg}}</p>
+			<p>再次访问 计算属性 reverseMsg {{reverseMsg}}</p>
+			<button v-on:click="reverseMsgMethod">调用方法  reverseMsgMethod</button>
+			
+			<p style="color:red">结论 ： 若计算属性依赖的值没有改变，那么无论计算属性调用多少次，值是不会改变的，也就是计算属性是根据其依赖的值进行缓存的</p>
+			<p style="color:red"> 而调用方法每次都会执行</p>
+			
+			<p>计算属性 vs 侦听属性</p>
+			<input  v-model="firstName"/>
+			<p>firstName : {{firstName}}</p>
+			<input v-model="lastName"/>
+			<p>lastName : {{lastName}}</p>
+		    <p>{{fullName}}</p>
+		    
+		    <button v-on:click="setFullName">设置fullName</button>
+		    <p>{{getSetFullName}}</p>
+		    
+		  
+		</div>
+		
+		<div id="id_watch">
+			<p>watch</p>
+		  <p>ask a yes/no question 
+		  	 <input v-model="question" />
+		  </p>
+		  <p>{{answer}}</p>
+		</div>
+		
+		<script type="text/javascript" src="../js/vue_compute.js" ></script>
+	</body>
+</html>

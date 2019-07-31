@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+    
+        <h2 style="color: red;font-weight: 200;">使用默认的方式 : style="color: red;font-weight: 200;"</h2>
+
+        <h2 v-bind:style="[styleObj1,styleObj2]">使用data</h2>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el : "#app",
+            data : {
+                styleObj1 : {"color":"red"},
+                styleObj2 : {"font-weight":"200"}
+            }
+        })
+    </script>
+    
+</body>
+</html>

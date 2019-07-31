@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>列表渲染</title>
+</head>
+<body>
+
+    <div id="id_array">
+        <p>v-for 把一个数组对应一组元素</p>
+        <ul>
+            <li v-for="(item, index) in items" >
+                {{who}} + "--" +{{item.content}} + "--" + {{index}}
+            </li>
+        </ul>
+
+        <p style="color: red">变异方法  ： 改变原数组</p>
+        <button v-on:click="pushItem">入栈 push()</button>
+        <button v-on:click="popItem">出栈 pop()</button>
+        <button v-on:click="reverseItem">翻转 reverse()</button>
+
+        <p>替换数组 ： 不改变原数组，生成一个新的数组</p>
+        <button v-on:click="filterWorkItem">filter : 包含work</button>
+        <button v-on:click="filterStudyItem">filter : 包含study</button>
+        <button v-on:click="concatItem">在原来数组副本后面添加 concat()</button>
+
+
+        <p>原数组 {{testArr}}</p>
+        <p>slice(3) : {{sliceArray3}}</p>
+        <p>原数组 slice(-2) : {{sliceArray_2}}</p>
+        <p>原数组 slice(2,5) : {{sliceArray2And5}}</p>
+
+        <br>
+
+        <p>v-for 使用对象</p>
+        <ul>
+            <li v-for="(name,value,index) in book" :key="index">
+                {{index}} {{name}} + "--" + {{value}}
+            </li>
+        </ul>
+
+        <p style="color: red">注意事项<br>
+            vm.items[1] = 'x' // 不是响应性的<br>
+            vm.items.length = 2 // 不是响应性的<br></p>
+
+            <ul>
+                    <template v-for="(item,index) in items">
+                      <li>{{index}}</li>
+                      <li>{{ item.content }}</li>
+                    </template>
+            </ul>
+
+        <p>===========ToDo 实例============</p>
+        <form v-on:submit.prevent="addNewTodo">
+            <label for="id_new_todo">Add New Todo</label>
+            <input id="id_new_todo" v-model="todoContent" placeholder="输入待办事项">
+            <button>确定</button>
+        </form>
+        <ul>
+            <li is="todo-item"
+                v-for="(item, index) in todos"
+                v-bind:key="item.id"
+                v-bind:title="item.content"
+                v-on:remove="todos.splice(index,1)">
+            </li>
+        </ul>
+        
+    </div>
+    
+    <script src="../js/vue_list_draw.js"></script>
+</body>
+</html>

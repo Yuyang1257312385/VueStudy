@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>		
+    <title>组件基础</title>
+</head>
+<body>
+
+    <div id="id_widget">
+
+        <p>组件定义及复用</p>
+        <p>没用一次组件，就有一个新实例被创建</p>
+        <p style="color: red">组件的data必须为一个函数</p>
+        <button_counter></button_counter>
+        <button_counter></button_counter>
+        <button_counter></button_counter>
+
+        <hr>
+        <p>通过prop向子组件传递数据</p>
+
+        <blog blog_title="东风破" blog_author="jay"></blog>
+
+        <blog v-for="b in blogs"
+            v-bind:key="b.id"
+            v-bind:blog_title="b.title"
+            v-bind:blog_author="b.author"></blog>
+        <hr>
+        <p>单个根元素</p>
+        <p style="color: red">注意: 每个组件必须只有一个根元素</p>
+        <p style="color: red">注意: 模板中的 `` 不支持ie</p>
+       
+        <div :style="{fontSize : songFontSize+'em'}">
+            <album v-for="so in songs"
+            v-bind:key="so.id"
+            v-bind:song="so"
+            v-on:large="onLarge"
+            v-on:small="onSmall"
+            v-on:large_fix="songFontSize += $event"
+            v-on:small_fix="smallFix(0.1)"
+            ></album>
+        </div>
+         
+        <hr>
+
+        <auto_album v-for="so in songs"
+            v-bind:key="so.id"
+            v-bind:song="so">
+        </auto_album>
+        <hr>
+        <p>在组件上使用v-model</p>
+        <custom_input
+            v-model="searchText"></custom_input>
+        <p>{{searchText}}</p>
+        <hr>
+        <p>通过插槽分发内容</p>
+        <slot_comp>
+            something occur error!
+        </slot_comp>
+        <hr>
+        <p>动态组件</p>
+        <button
+            v-for="(tab, index) in tabs"
+            v-bind:key="tab"
+            v-on:click="currentTab = tab" >
+        {{tab}}
+        </button>
+        <component :is="currentComponent"></component>
+
+        <hr>
+        <p>Dom模板解析时的注意事项</p>
+        <ul>
+            <li>ul、ol、table 和 select，对于哪些元素可以出现在其内部是有严格限制的,<br>
+                使用自定义组件时需要在这些元素内部先使用其规定的内容，如li等，<br>
+                使用 is指向自定义组件，如果直接使用自定义组件，有可能会解析失败
+
+            </li>
+        </ul>
+    </div>
+
+    <script src="../js/vue_widget.js"></script>
+    
+</body>
+</html>

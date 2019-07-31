@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="切换flag" v-on:click="toggle">
+
+        <p v-if="flag">这里是v-if控制的元素</p>
+        <p v-show="flag">这里是v-show控制的元素</p>
+
+        <hr>
+        <h2>总结</h2>
+        <p v-for="(item, index) in items" :key="index" style="color: red">{{item}}</p>
+
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el : "#app",
+            data : {
+                flag : true,
+                items : [
+                    "1. v-if 每次切换都会重新创建和删除元素",
+                    "2. v-show 每次切换只是修改了 display:none 的属性",
+                    "3. v-if 有较高的切换性能消耗，所以若频繁的切换显示不适合用v-if",
+                    "4. v-show 有较高的初始渲染性能消耗，适合频繁切换显示隐藏，若基本不显示，不适合使用v-if"
+                ]
+            },
+            methods: {
+                toggle(){
+                    this.flag = !this.flag
+                }
+            },
+        })
+    </script>
+    
+</body>
+</html>

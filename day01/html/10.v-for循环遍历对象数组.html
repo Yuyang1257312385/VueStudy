@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(item, index) in items" :key="item.id">
+                item.id is {{item.id}}--- item.name is {{item.name}} --- item.index is {{index}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el : "#app",
+            data : {
+                items : [
+                    {id:0,name:"张三"},
+                    {id:1,name:"李四"},
+                    {id:2,name:"王二麻子"},
+                ]
+            }
+        })
+    </script>
+    
+</body>
+</html>
